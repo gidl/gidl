@@ -10,12 +10,15 @@ GIDL **translates between the Interface Definition Languages (IDLs)** of the fol
 
 GIDL uses XML because:
 - XML is easy to extend, unknown elements are ignored.
-- XML is widely understood and supported in most programming languages.
-- To translate between IDLs, the weak performance of XML is a non-issue.
+- XML is widely understood.
+- XML is supported in most programming languages, so translators can be written in different languages.
+- XML eases modeling tool integration.
+- For the purpose of translating between IDLs, the weak performance of XML is a non-issue.
 
 GIDL serves several purposes:
-- simplify migration between the four messaging frameworks
-- allow easy performance comparisons between the messaging frameworks
+- simplifies migration between the four messaging frameworks
+- enables modeling tool integration
+- allows easy performance comparisons between the messaging frameworks
 
 ## Basic types
 GIDL translates basic types as follows:
@@ -70,24 +73,27 @@ Therefore, they are simplified using the messaging focus only:
 ## Service concepts
 GIDL translates the different service concepts as follows:
 
-GIDL      |SBE              |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
-----------|-----------------|----------|------------|----------------|--------------|------------------
-message   |message          |struct    |message     |table           |struct        |encapsulated one transmitted message
-service   |-                |service   |service     |-               |interface     |collection of service methods
-schema    |messageSchema    |-         |-           |-               |-             |Root XML element
-fileId    |messageSchema id |-         |-           |file_identifier |@ (unique id) |unique file ID
-reference |-                |reference |reference   |reference       |reference     |references an interface/table
+GIDL      |SBE               |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
+----------|------------------|----------|------------|----------------|--------------|------------------
+message   |message           |struct    |message     |table           |struct        |encapsulates one transmitted message
+service   |-                 |service   |service     |-               |interface     |collection of service methods
+schema    |message schema    |-         |-           |-               |-             |Root XML element
+fileId    |message schema id |-         |-           |file_identifier |@ (unique id) |unique file ID
+reference |-                 |reference |reference   |reference       |reference     |references another interface/table
 
 Concerning the missing "service" concepts in  SBE and FlatBuffers, it is crucial to unterstand that "message" name naming conventions (possibly in combination with "fileId") can serve the same purpose as a "service" name.
 
 For example, one might add the suffixes "Request" and/or "Response" to both messages forming one service together, e.g.:
-- ```GetQuoteRequest    (as the message/table name)
-- ```GetQuoteResponse   (as the message/table name)
+```
+     GetQuoteRequest     (as the message/table name)
+     GetQuoteResponse    (as the message/table name)
+```
 
 But: this is definitely not elegant, especially when building APIs having several different service methods this way.
 
 Therefore, **we humbly suggest that SBE and FlatBuffers introduce a "service" concept later on**, to make them more convenient for API construction.
 This will improve readability, maintainability, clarity and usability. It is important to note that this will have no performance impact at all.
 
-## Contribute
-> Feel welcome to contribute to GIDL!
+## Please help and contribute
+GIDL is an exciting work in progress.
+Please feel welcome to contribute to GIDL!
