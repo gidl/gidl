@@ -48,7 +48,7 @@ GIDL translates the complex type concepts as follows:
 GIDL   |SBE       |Thrift    |ProtoBuf |FlatBuffers |Capnp   |Comment
 -------|----------|----------|---------|------------|--------|------------------------
 struct |composite |-         |-        |struct      |group   |set of fields that are encapsulated
-enum   |enum      |enum      |enum     |enum        |enum    |
+enum   |enum      |enum      |enum     |enum        |enum    |wow, the only concept present in all IDLs
 map    |-         |map       |map      |-           |-       |like Java Map
 list   |group     |list      |repeated |vector      |List(T) |like Java List
 union  |-         |union     |oneof    |union       |union   |like C union (alternative space)
@@ -73,13 +73,13 @@ message          |message          |struct    |message     |table           |str
 service          |-                |service   |service     |-               |interface     |collection of methods: parameters, returns results
 messageSchema    |messageSchema    |-         |-           |-               |-             |Root XML element
 fileId           |messageSchema id |-         |-           |file_identifier |@ (unique id) |unique file ID
--                |-                |reference |reference   |reference       |reference     |reference to an interface/table
+reference        |-                |reference |reference   |reference       |reference     |reference to an interface/table
 
-It is crucial to unterstand that
-    "fileId" in combination with "message" name
-can serve the same purpose as a
-    "service" name
-    
-But: this is definitely not elegant, especially to build APIs having several methods.
-Therefore, we suggest that SBE and FlatBuffers introduce a "service" concept later on, to make them more convenient for API construction.
+Concerning the missing "service" concepts in  SBE and FlatBuffers, it is crucial to unterstand that "message" name naming conventions (possibly in combination with "fileId") can serve the same purpose as a "service" name.
+For example, one might add the suffixes "Request" and/or "Response" to both messages forming one service together, e.g.:
+     ```GetQuoteRequest    (as the message/table name)
+     ```GetQuoteResponse   (as the message/table name)
 
+But: this is definitely not elegant, especially to build APIs having several different service methods.
+Therefore, we humbly suggest that SBE and FlatBuffers introduce a "service" concept later on, to make them more convenient for API construction.
+This will improve readability, maintainability, clarity and usability. And it is important to note that this will have no performance impact at all.
