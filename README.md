@@ -1,7 +1,7 @@
 # gidl
 Generalized Interface Definition Language (GIDL)
 
-=Introduction
+## Introduction
 GIDL translates between the following Interface Definition Languages (IDLs):
 - Simple Binary Encoding (SBE)
 - Apache Thrift
@@ -14,7 +14,7 @@ GIDL uses XML because:
 - To translate between IDLs, the weak performance of XML is a non-issue.
 
 
-=Basic types
+## Basic types
 GIDL translates basic types as follows:
 
 GIDL    |SBE     |Thrift |ProtoBuf                |FlatBuffers |Capnp   |Comment
@@ -33,7 +33,7 @@ float32 |float   |-      |float                   |float       |Float32 |like Ja
 float64 |double  |double |double                  |double      |Float64 |like Java double
 
 
-=String/blob types
+## String/blob types
 GIDL translates string/blob types as follows:
 
 GIDL    |SBE     |Thrift |ProtoBuf |FlatBuffers |Capnp   |Comment
@@ -42,7 +42,7 @@ data    |data    |binary |bytes    |-           |Data    |Binary blob, sequence 
 string  |-       |string |string   |string      |Text    |Blob with character encoding (e.g. UTF-8)
 
 
-=Complex type  concepts
+## Complex type  concepts
 GIDL translates the complex type concepts as follows:
 
 GIDL   |SBE       |Thrift    |ProtoBuf |FlatBuffers |Capnp   |Comment
@@ -64,21 +64,21 @@ Therefore, they are simplified using the messaging focus only:
 - SBE: "field" serves to identify fixed size fields of a message, this is done with a "length" attribute.
 
 
-=Service concepts
+## Service concepts
 GIDL translates the different service concepts as follows:
 
 GIDL             |SBE              |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
 -----------------|-----------------|----------|------------|----------------|--------------|------------------
-message          |message          |struct    |message     |table           |struct        |collection of methods: parameters, returns results
-service          |-                |service   |service     |-               |interface     |collection of methods: parameters, returns results
+message          |message          |struct    |message     |table           |struct        |encapsulated one transmitted message
+service          |-                |service   |service     |-               |interface     |collection of service methods
 messageSchema    |messageSchema    |-         |-           |-               |-             |Root XML element
 fileId           |messageSchema id |-         |-           |file_identifier |@ (unique id) |unique file ID
-reference        |-                |reference |reference   |reference       |reference     |reference to an interface/table
+reference        |-                |reference |reference   |reference       |reference     |references an interface/table
 
 Concerning the missing "service" concepts in  SBE and FlatBuffers, it is crucial to unterstand that "message" name naming conventions (possibly in combination with "fileId") can serve the same purpose as a "service" name.
 For example, one might add the suffixes "Request" and/or "Response" to both messages forming one service together, e.g.:
-     ```GetQuoteRequest    (as the message/table name)
-     ```GetQuoteResponse   (as the message/table name)
+```GetQuoteRequest    (as the message/table name)
+```GetQuoteResponse   (as the message/table name)
 
 But: this is definitely not elegant, especially to build APIs having several different service methods.
 Therefore, we humbly suggest that SBE and FlatBuffers introduce a "service" concept later on, to make them more convenient for API construction.
