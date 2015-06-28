@@ -2,7 +2,7 @@
 Generalized Interface Definition Language (GIDL)
 
 ## Introduction
-GIDL translates between the Interface Definition Languages (IDLs) of the following messaging frameworks:
+GIDL **translates between the Interface Definition Languages (IDLs)** of the following messaging frameworks:
 - Simple Binary Encoding (SBE)
 - Apache Thrift
 - Google FlatBuffers
@@ -59,12 +59,12 @@ typedef|type      |typedef   |-        |-           |using   |Renaming primitive
 void   |-         |void      |void     |-           |Void    |like Java void, only needed for services/interfaces
 const  |-         |const     |-        |-           |const   |constant value
 
-These complex type concepts were introduced with programming language support in mind, not focusing on the messaging aspect.
+The following type concepts were introduced with programming language support or tool support in mind, not focusing on the messaging aspect.
 Therefore, they are simplified using the messaging focus only:
 - Apache Thrift: "set" is simplified using "list".
 - Apache Thrift: "exception" is simplified using "struct" combined with "string".
 - Google FlatBuffers: "root_type" is ignored.
-- SBE: "field" serves to identify fixed size fields of a message, this is done with a "length" attribute.
+- SBE: "field" serves to identify fixed size fields of a message, this is done with a "length" attribute in GIDL.
 
 
 ## Service concepts
@@ -86,8 +86,8 @@ For example, one might add the suffixes "Request" and/or "Response" to both mess
 
 But: this is definitely not elegant, especially when building APIs having several different service methods this way.
 
-Therefore, we humbly suggest that SBE and FlatBuffers introduce a "service" concept later on, to make them more convenient for API construction.
-This will improve readability, maintainability, clarity and usability. And it is important to note that this will have no performance impact at all.
+Therefore, **we humbly suggest that SBE and FlatBuffers introduce a "service" concept later on**, to make them more convenient for API construction.
+This will improve readability, maintainability, clarity and usability. It is important to note that this will have no performance impact at all.
 
 ## Contribute
 > Feel welcome to contribute to GIDL!
