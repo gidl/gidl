@@ -1,0 +1,467 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>gidl by gidl</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>gidl</h1>
+        <p>Generalized Interface Definition Language (GIDL)</p>
+
+        <p class="view"><a href="https://github.com/gidl/gidl">View the Project on GitHub <small>gidl/gidl</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/gidl/gidl/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/gidl/gidl/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/gidl/gidl">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a id="introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>GIDL <strong>translates between the Interface Definition Languages (IDLs)</strong> of the following messaging frameworks:</p>
+
+<ul>
+<li>Simple Binary Encoding (SBE)</li>
+<li>Apache Thrift</li>
+<li>Google FlatBuffers</li>
+<li>Google Protocol Buffers (ProtoBuf)</li>
+<li>Cap'n Proto (capnp)</li>
+</ul>
+
+<p>GIDL uses XML because:</p>
+
+<ul>
+<li>XML is easy to extend, unknown elements are ignored.</li>
+<li>XML is widely understood.</li>
+<li>XML is supported in most programming languages, so translators can be written in different languages.</li>
+<li>XML eases modeling tool integration.</li>
+<li>For the purpose of translating between IDLs, the weak performance of XML is a non-issue.</li>
+</ul>
+
+<p>GIDL serves several purposes:</p>
+
+<ul>
+<li>simplifies migration between the four messaging frameworks</li>
+<li>enables modeling tool integration</li>
+<li>allows easy performance comparisons between the messaging frameworks</li>
+</ul>
+
+<h2>
+<a id="translating-messaging-concepts" class="anchor" href="#translating-messaging-concepts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Translating messaging concepts</h2>
+
+<h3>
+<a id="basic-types" class="anchor" href="#basic-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic types</h3>
+
+<p>GIDL translates basic types as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>GIDL</th>
+<th>SBE</th>
+<th>Thrift</th>
+<th>ProtoBuf</th>
+<th>FlatBuffers</th>
+<th>Capnp</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bool</td>
+<td>(bit)set</td>
+<td>bool</td>
+<td>bool</td>
+<td>bool</td>
+<td>Bool</td>
+<td>like Java boolean</td>
+</tr>
+<tr>
+<td>char8</td>
+<td>char</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Signed 8-bit char</td>
+</tr>
+<tr>
+<td>sint8</td>
+<td>int8</td>
+<td>byte</td>
+<td>-</td>
+<td>byte</td>
+<td>Int8</td>
+<td>Signed</td>
+</tr>
+<tr>
+<td>sint16</td>
+<td>int16</td>
+<td>i16</td>
+<td>-</td>
+<td>short</td>
+<td>Int16</td>
+<td>Signed</td>
+</tr>
+<tr>
+<td>sint32</td>
+<td>int32</td>
+<td>i32</td>
+<td>sint32, sfixed32, int32</td>
+<td>int</td>
+<td>Int32</td>
+<td>Signed</td>
+</tr>
+<tr>
+<td>sint64</td>
+<td>int64</td>
+<td>i64</td>
+<td>sint64, sfixed64, int64</td>
+<td>long</td>
+<td>Int64</td>
+<td>Signed</td>
+</tr>
+<tr>
+<td>uint8</td>
+<td>uint8</td>
+<td>-</td>
+<td>-</td>
+<td>ubyte</td>
+<td>UInt8</td>
+<td>Unsigned</td>
+</tr>
+<tr>
+<td>uint16</td>
+<td>uint16</td>
+<td>-</td>
+<td>-</td>
+<td>ushort</td>
+<td>UInt16</td>
+<td>Unsigned</td>
+</tr>
+<tr>
+<td>uint32</td>
+<td>uint32</td>
+<td>-</td>
+<td>uint32, fixed32</td>
+<td>uint</td>
+<td>UInt32</td>
+<td>Unsigned</td>
+</tr>
+<tr>
+<td>uint64</td>
+<td>uint64</td>
+<td>-</td>
+<td>uint64, fixed64</td>
+<td>ulong</td>
+<td>UInt64</td>
+<td>Unsigned</td>
+</tr>
+<tr>
+<td>float32</td>
+<td>float</td>
+<td>-</td>
+<td>float</td>
+<td>float</td>
+<td>Float32</td>
+<td>like Java float</td>
+</tr>
+<tr>
+<td>float64</td>
+<td>double</td>
+<td>double</td>
+<td>double</td>
+<td>double</td>
+<td>Float64</td>
+<td>like Java double</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="stringblob-types" class="anchor" href="#stringblob-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>String/blob types</h3>
+
+<p>GIDL translates string/blob types as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>GIDL</th>
+<th>SBE</th>
+<th>Thrift</th>
+<th>ProtoBuf</th>
+<th>FlatBuffers</th>
+<th>Capnp</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data</td>
+<td>data</td>
+<td>binary</td>
+<td>bytes</td>
+<td>-</td>
+<td>Data</td>
+<td>Binary blob, sequence of bytes</td>
+</tr>
+<tr>
+<td>string</td>
+<td>-</td>
+<td>string</td>
+<td>string</td>
+<td>string</td>
+<td>Text</td>
+<td>Blob with character encoding (e.g. UTF-8)</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="complex-types" class="anchor" href="#complex-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complex types</h3>
+
+<p>GIDL translates the complex type concepts as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>GIDL</th>
+<th>SBE</th>
+<th>Thrift</th>
+<th>ProtoBuf</th>
+<th>FlatBuffers</th>
+<th>Capnp</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>struct</td>
+<td>composite</td>
+<td>-</td>
+<td>-</td>
+<td>struct</td>
+<td>group</td>
+<td>set of fields that are encapsulated</td>
+</tr>
+<tr>
+<td>enum</td>
+<td>enum</td>
+<td>enum</td>
+<td>enum</td>
+<td>enum</td>
+<td>enum</td>
+<td>wow, the only concept present in all IDLs</td>
+</tr>
+<tr>
+<td>map</td>
+<td>-</td>
+<td>map</td>
+<td>map</td>
+<td>-</td>
+<td>-</td>
+<td>like Java Map</td>
+</tr>
+<tr>
+<td>list</td>
+<td>group</td>
+<td>list</td>
+<td>repeated</td>
+<td>vector</td>
+<td>List(T)</td>
+<td>like Java List</td>
+</tr>
+<tr>
+<td>union</td>
+<td>-</td>
+<td>union</td>
+<td>oneof</td>
+<td>union</td>
+<td>union</td>
+<td>like C union (alternative space)</td>
+</tr>
+<tr>
+<td>typedef</td>
+<td>type</td>
+<td>typedef</td>
+<td>-</td>
+<td>-</td>
+<td>using</td>
+<td>Renaming primitive types</td>
+</tr>
+<tr>
+<td>void</td>
+<td>-</td>
+<td>void</td>
+<td>void</td>
+<td>-</td>
+<td>Void</td>
+<td>like Java void, only needed for services/interfaces</td>
+</tr>
+<tr>
+<td>const</td>
+<td>-</td>
+<td>const</td>
+<td>-</td>
+<td>-</td>
+<td>const</td>
+<td>constant value</td>
+</tr>
+</tbody>
+</table>
+
+<p>The following type concepts were introduced with programming language support or tool support in mind, not focusing on the messaging aspect.
+Therefore, they are simplified using the messaging focus only:</p>
+
+<ul>
+<li>Apache Thrift: "set" is simplified using "list".</li>
+<li>Apache Thrift: "exception" is simplified using "struct" combined with "string".</li>
+<li>Google FlatBuffers: "root_type" is ignored.</li>
+<li>SBE: "field" serves to identify fixed size fields of a message, this is done with a "length" attribute in GIDL.</li>
+</ul>
+
+<h3>
+<a id="messages" class="anchor" href="#messages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Messages</h3>
+
+<p>GIDL translates the message concepts as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>GIDL</th>
+<th>SBE</th>
+<th>Thrift</th>
+<th>ProtoBuf</th>
+<th>FlatBuffers</th>
+<th>Capnp</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>message</td>
+<td>message</td>
+<td>struct</td>
+<td>message</td>
+<td>table</td>
+<td>struct</td>
+<td>encapsulates one transmitted message</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>-</td>
+<td>reference</td>
+<td>reference</td>
+<td>reference</td>
+<td>reference</td>
+<td>references to another message, struct or table</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="translating-remote-service-concepts" class="anchor" href="#translating-remote-service-concepts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Translating remote service concepts</h2>
+
+<p>Messages are the basic building blocks of remote services. However, looking at the detail: building remote services needs more than just messages only. </p>
+
+<p>We need to be able to construct three main types of remote services:</p>
+
+<ol>
+<li>unidirectional services</li>
+<li>bidirectional asynchronous services</li>
+<li>bidirectional synchronous services</li>
+</ol>
+
+<p>There are two different approaches how to construct remote services:</p>
+
+<ol>
+<li>unique file IDs, in combination with struct/message/table names</li>
+<li>service definitions</li>
+</ol>
+
+<p>Both approaches can be applied - but building bidirectional remote services is more difficult without service definitions:</p>
+
+<ul>
+<li>Bidirectional service methods consist of both request messages and response messages. To clarify which two messages form the service together, one might add the suffixes "Request" and/or "Response" to both messages forming one service.</li>
+<li>Services with many different methods (e.g. an API) are difficult to define, especially when the request message type is the same for some methods.</li>
+<li>One way to fix this is to split these service methods into different files. Thus, the unique file IDs are used to show which service method is meant. This way, the request message names can be the same, but their definitions are in effect the same. this leads to code redundancy and violates the DRY principle.</li>
+<li>Another way to fix this is to duplicate the request messages in the same file, giving them different message names. This again leads to code redundancy and violates the DRY principle.</li>
+</ul>
+
+<p>GIDL translates the different service concepts as follows:</p>
+
+<table>
+<thead>
+<tr>
+<th>GIDL</th>
+<th>SBE</th>
+<th>Thrift</th>
+<th>ProtoBuf</th>
+<th>FlatBuffers</th>
+<th>Capnp</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>service</td>
+<td>-</td>
+<td>service</td>
+<td>service</td>
+<td>-</td>
+<td>interface</td>
+<td>collection of service methods</td>
+</tr>
+<tr>
+<td>schema</td>
+<td>message schema</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>Root XML element</td>
+</tr>
+<tr>
+<td>fileId</td>
+<td>message schema id</td>
+<td>-</td>
+<td>-</td>
+<td>file_identifier</td>
+<td>@ (unique id)</td>
+<td>unique file ID</td>
+</tr>
+</tbody>
+</table>
+
+<p>The missing "service" concept in  SBE and FlatBuffers is inconvenient currently, but it is always possible to add a "service" concept later on.
+This will improve readability, maintainability, clarity and usability. It is clear that this is not a performance argument, but a software engineering argument solely.</p>
+
+<h2>
+<a id="please-help-and-contribute" class="anchor" href="#please-help-and-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Please help and contribute</h2>
+
+<p>GIDL is an exciting work in progress.</p>
+
+<p>Please feel welcome to contribute to GIDL!</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/gidl">gidl</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
