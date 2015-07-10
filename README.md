@@ -75,7 +75,7 @@ GIDL translates the message concepts as follows:
 GIDL      |SBE               |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
 ----------|------------------|----------|------------|----------------|--------------|-----------------
 message   |message           |struct    |message     |table           |struct        |encapsulates one transmitted message
-reference |-                 |reference |reference   |reference       |reference     |references to another message/struct/table
+reference |-                 |reference |reference   |reference       |reference     |references to another message, struct or table
 
 
 ## Translating remote service concepts
@@ -94,7 +94,8 @@ Both approaches can be applied - but building bidirectional remote services is m
 * Services with many different methods (e.g. an API) are difficult to define, especially when the request message type is the same for some methods.
 * One way to fix this is to split these service methods into different files. Thus, the unique file IDs are used to show which service method is meant. This way, the request message names can be the same, but their definitions are in effect the same. this leads to code redundancy and violates the DRY principle.
 * Another way to fix this is to duplicate the request messages in the same file, giving them different message names. This again leads to code redundancy and violates the DRY principle.r
-GIDL translates the different service concepts as follows
+GIDL translates the different service concepts as follows:
+
 GIDL      |SBE               |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
 ----------|------------------|----------|------------|----------------|--------------|-----------------
 service   |-                 |service   |service     |-               |interface     |collection of service methods
