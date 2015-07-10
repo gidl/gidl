@@ -1,12 +1,10 @@
-# gidl
-Generalized Interface Definition Language (GIDL)
-
 ## Introduction
 GIDL **translates between the Interface Definition Languages (IDLs)** of the following messaging frameworks:
 - Simple Binary Encoding (SBE)
 - Apache Thrift
 - Google FlatBuffers
 - Google Protocol Buffers (ProtoBuf)
+- Cap'n Proto (capnp)
 
 GIDL uses XML because:
 - XML is easy to extend, unknown elements are ignored.
@@ -20,7 +18,9 @@ GIDL serves several purposes:
 - enables modeling tool integration
 - allows easy performance comparisons between the messaging frameworks
 
-## Basic types
+## Translating messaging concepts
+
+### Basic types
 GIDL translates basic types as follows:
 
 GIDL    |SBE     |Thrift |ProtoBuf                |FlatBuffers |Capnp   |Comment
@@ -39,7 +39,7 @@ float32 |float   |-      |float                   |float       |Float32 |like Ja
 float64 |double  |double |double                  |double      |Float64 |like Java double
 
 
-## String/blob types
+### String/blob types
 GIDL translates string/blob types as follows:
 
 GIDL    |SBE     |Thrift |ProtoBuf |FlatBuffers |Capnp   |Comment
@@ -48,7 +48,7 @@ data    |data    |binary |bytes    |-           |Data    |Binary blob, sequence 
 string  |-       |string |string   |string      |Text    |Blob with character encoding (e.g. UTF-8)
 
 
-## Complex type  concepts
+### Complex types
 GIDL translates the complex type concepts as follows:
 
 GIDL   |SBE       |Thrift    |ProtoBuf |FlatBuffers |Capnp   |Comment
@@ -69,31 +69,39 @@ Therefore, they are simplified using the messaging focus only:
 - Google FlatBuffers: "root_type" is ignored.
 - SBE: "field" serves to identify fixed size fields of a message, this is done with a "length" attribute in GIDL.
 
-
-## Service concepts
-GIDL translates the different service concepts as follows:
+### Messages
+GIDL translates the message concepts as follows:
 
 GIDL      |SBE               |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
-----------|------------------|----------|------------|----------------|--------------|------------------
+----------|------------------|----------|------------|----------------|--------------|-----------------
 message   |message           |struct    |message     |table           |struct        |encapsulates one transmitted message
+reference |-                 |reference |reference   |reference       |reference     |references to another message/struct/table
+
+
+## Translating remote service concepts
+Messages are the basic building blocks of remote services. However, looking at the detail: building remote services needs more than just messages only. 
+We need to be able to construct three main types of remote services:
+1. unidirectional services
+2. bidirectional asynchronous services
+3. bidirectional synchronous services
+
+There are two different approaches how to construct remote services:
+1. unique file IDs, in combination with struct/message/table names
+2. service definitions,  
+
+Both approaches can be applied - but building bidirectional remote services is more difficult without service definitions:
+* Bidirectional service methods consist of both request messages and response messages. To clarify which two messages form the service together, one might add the suffixes "Request" and/or "Response" to both messages forming one service.
+* Services with many different methods (e.g. an API) are difficult to define, especially when the request message type is the same for some methods.
+* One way to fix this is to split these service methods into different files. Thus, the unique file IDs are used to show which service method is meant. This way, the request message names can be the same, but their definitions are in effect the same. this leads to code redundancy and violates the DRY principle.
+* Another way to fix this is to duplicate the request messages in the same file, giving them different message names. This again leads to code redundancy and violates the DRY principle.r
+GIDL translates the different service concepts as follows
+GIDL      |SBE               |Thrift    |ProtoBuf    |FlatBuffers     |Capnp         |Comment
+----------|------------------|----------|------------|----------------|--------------|-----------------
 service   |-                 |service   |service     |-               |interface     |collection of service methods
 schema    |message schema    |-         |-           |-               |-             |Root XML element
-fileId    |message schema id |-         |-           |file_identifier |@ (unique id) |unique file ID
-reference |-                 |reference |reference   |reference       |reference     |references another interface/table
-
-Concerning the missing "service" concepts in  SBE and FlatBuffers, it is crucial to unterstand that "message" name naming conventions (possibly in combination with "fileId") can serve the same purpose as a "service" name.
-
-For example, one might add the suffixes "Request" and/or "Response" to both messages forming one service together, e.g.:
-```
-     GetQuoteRequest     (as the message/table name)
-     GetQuoteResponse    (as the message/table name)
-```
-
-But: this is definitely not elegant, especially when building APIs having several different service methods this way.
-
-Therefore, **we humbly suggest that SBE and FlatBuffers introduce a "service" concept later on**, to make them more convenient for API construction.
-This will improve readability, maintainability, clarity and usability. It is important to note that this will have no performance impact at all.
+fileId    |message schema id |-         |-           |file_identifier |@ (unique id) |unique file IDDeThe missing "service" concept in  SBE and FlatBuffers is inconvenient currently, but it is always possible to add a "service" concept later on.
+This will improve readability, maintainability, clarity and usability. It is clear that this is not a performance argument, but a software engineering argument solely..
 
 ## Please help and contribute
-GIDL is an exciting work in progress.
-Please feel welcome to contribute to GIDL!
+GIDL is an exciting work in progress..
+Please feel welcome to contribute to GIDL!!
