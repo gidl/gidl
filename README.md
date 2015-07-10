@@ -82,19 +82,19 @@ reference |-                 |reference |reference   |reference       |reference
 Messages are the basic building blocks of remote services. However, looking at the detail: building remote services needs more than just messages only. 
 
 We need to be able to construct three main types of remote services:
-1. unidirectional services
-2. bidirectional asynchronous services
-3. bidirectional synchronous services
+  1. unidirectional services
+  2. bidirectional asynchronous services
+  3. bidirectional synchronous services
 
 There are two different approaches how to construct remote services:
-1. unique file IDs, in combination with struct/message/table names
-2. service definitions
+  1. unique file IDs, in combination with struct/message/table names
+  2. service definitions
 
 Both approaches can be applied - but building bidirectional remote services is more difficult without service definitions:
-* Bidirectional service methods consist of both request messages and response messages. To clarify which two messages form the service together, one might add the suffixes "Request" and/or "Response" to both messages forming one service.
-* Services with many different methods (e.g. an API) are difficult to define, especially when the request message type is the same for some methods.
-* One way to fix this is to split these service methods into different files. Thus, the unique file IDs are used to show which service method is meant. This way, the request message names can be the same, but their definitions are in effect the same. this leads to code redundancy and violates the DRY principle.
-* Another way to fix this is to duplicate the request messages in the same file, giving them different message names. This again leads to code redundancy and violates the DRY principle.
+  * Bidirectional service methods consist of both request messages and response messages. To clarify which two messages form the service together, one might add the suffixes "Request" and/or "Response" to both messages forming one service.
+  * Services with many different methods (e.g. an API) are difficult to define, especially when the request message type is the same for some methods.
+  * One way to fix this is to split these service methods into different files. Thus, the unique file IDs are used to show which service method is meant. This way, the request message names can be the same, but their definitions are in effect the same. this leads to code redundancy and violates the DRY principle.
+  * Another way to fix this is to duplicate the request messages in the same file, giving them different message names. This again leads to code redundancy and violates the DRY principle.
 
 GIDL translates the different service concepts as follows:
 
