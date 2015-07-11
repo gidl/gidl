@@ -1,9 +1,7 @@
 # Migrate to low-latency services conveniently
 
 ## What is GIDL?
-GIDL **translates between the Interface Definition Languages 
-
-(IDLs)** of these messaging frameworks:
+GIDL **translates between the Interface Definition Languages (IDLs)** of these messaging frameworks:
 - Apache Thrift - **medium latency**
 - Google Protocol Buffers (ProtoBuf) - **medium latency**
 - Simple Binary Encoding (SBE) - **low latency**
@@ -29,8 +27,7 @@ Reasons to use GIDL:
 
 [GIDL roadmap](GIDL roadmap)
 
-
 ## Please help and contribute
 GIDL is an exciting work in progress.
 
-Please feel welcome to contribute to GIDL, just write an e-mail to Andreas at gidl-community@gmx.de 
+Please feel very welcome to contribute to GIDL, just write an e-mail to Andreas at gidl-community@gmx.de 
