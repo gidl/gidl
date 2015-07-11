@@ -1,4 +1,4 @@
-# Migrate to low-latency services conveniently
+# Migrate to low-latency messaging conveniently
 
 ## What is GIDL?
 GIDL **translates between the Interface Definition Languages (IDLs)** of these messaging frameworks:
@@ -19,9 +19,7 @@ Reasons to use GIDL:
 
 [Translating message definitions](Translating message definitions)
 
-[Translating service definitions](Translating service definitions)
-
-[Service workarounds for SBE and FlatBuffers](Service workarounds for SBE and FlatBuffers)
+[Translating service definitions](Translating service definitions) *in combination with* [Service workarounds for SBE and FlatBuffers](Service workarounds for SBE and FlatBuffers)
 
 [Suggesting improvements for generated Java clients](Suggesting improvements for generated Java clients)
 
