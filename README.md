@@ -15,17 +15,17 @@ Reasons to use GIDL:
 - Ease performance comparisons between the messaging frameworks
 
 ## Documentation
-[Design principles](Design principles)
+[Design principles](wiki/Design-principles)
 
-[Translating message definitions](Translating message definitions)
+[Translating message definitions](wiki/Translating-message-definitions)
 
-[Translating service definitions](Translating service definitions) *in combination with* [Service workarounds for SBE and FlatBuffers](Service workarounds for SBE and FlatBuffers)
+[Translating service definitions](wiki/Translating-service-definitions) *in combination with* [Service workarounds for SBE and FlatBuffers](wiki/Service-workarounds-for-SBE-and-FlatBuffers)
 
-[Suggesting improvements for generated Java clients](Suggesting improvements for generated Java clients)
+[Suggesting improvements for generated Java clients](wiki/Suggesting-improvements-for-generated-Java-clients)
 
-[GIDL roadmap](GIDL roadmap)
+[GIDL roadmap](wiki/GIDL-roadmap)
 
 ## Please help and contribute
 GIDL is an exciting work in progress.
 
-Please feel very welcome to contribute to GIDL, just write an e-mail to Andreas at gidl-community@gmx.de 
+Please feel very welcome to contribute to GIDL! Consult the [GIDL roadmap](wiki/GIDL-roadmap) on how to help - and just write a quick e-mail to Andreas at gidl-community@gmx.de 
