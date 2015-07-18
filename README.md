@@ -28,4 +28,4 @@ Reasons to use GIDL:
 ## Please help and contribute
 GIDL is an exciting work in progress.
 
-Please feel very welcome to contribute to GIDL! Consult the [GIDL roadmap](https://github.com/gidl/gidl/wiki/GIDL-roadmap) on how to help - and just write a quick e-mail to Andreas at gidl-community@gmx.de 
+Please feel very welcome to contribute to GIDL! Consult the [GIDL roadmap](https://github.com/gidl/gidl/wiki/GIDL-roadmap) on how to help - and just write a quick e-mail to Andreas Schmid at gidl-community@gmx.de 
