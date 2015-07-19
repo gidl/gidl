@@ -2,11 +2,11 @@
 
 ## What is GIDL?
 GIDL **translates between the Interface Definition Languages (IDLs)** of these messaging frameworks:
-- Apache Thrift - **medium latency**
-- Google Protocol Buffers (ProtoBuf) - **medium latency**
 - Simple Binary Encoding (SBE) - **low latency**
 - Google FlatBuffers - **low latency**
 - Cap'n Proto (capnp) - **low latency**
+- Apache Thrift - **medium latency**
+- Google Protocol Buffers (ProtoBuf) - **medium latency**
 
 ## Why GIDL?
 Reasons to use GIDL:
@@ -26,13 +26,30 @@ Reasons to use GIDL:
 [GIDL roadmap](https://github.com/gidl/gidl/wiki/GIDL-roadmap)
 
 # Project dependencies
-Google FlatBuffers (by Google):
-- Project on GitHub: https://github.com/google/flatbuffers
-- Apache 2.0 License: https://github.com/google/flatbuffers/blob/master/LICENSE.txt
+**Simple binary encoding** (by Real Logic):
+- Project page: https://real-logic.github.io/simple-binary-encoding/
+- Project repository on GitHub: https://github.com/real-logic/simple-binary-encoding
+- Apache 2.0 license: https://github.com/real-logic/simple-binary-encoding/blob/master/LICENSE
 
-Simple binary encoding (by Real Logic):
-- Project on GitHub: https://github.com/real-logic/simple-binary-encoding
-- Apache 2.0 License: https://github.com/real-logic/simple-binary-encoding/blob/master/LICENSE
+**Google FlatBuffers** (by Google):
+- Project page: https://google.github.io/flatbuffers/
+- Project repository on GitHub: https://github.com/google/flatbuffers
+- Apache 2.0 license: https://github.com/google/flatbuffers/blob/master/LICENSE.txt
+
+**Cap'n Proto** (by Sandstorm.io):
+- Project page: https://capnproto.org/
+- Project repository on GitHub: https://github.com/sandstorm-io/capnproto
+- MIT license: https://github.com/sandstorm-io/capnproto/blob/master/LICENSE
+
+**Apache Thrift** (by Apache Foundation):
+- Project page: https://thrift.apache.org/
+- Project repository: https://git-wip-us.apache.org/repos/asf?p=thrift.git;a=summary
+- Apache 2.0 license: http://www.apache.org/licenses/
+
+**Google Protocol Buffers** (by Google):
+- Project page: https://developers.google.com/protocol-buffers/
+- Project repository on GitHub: https://github.com/google/protobuf
+- Apache 2.0 license: https://github.com/google/flatbuffers/blob/master/LICENSE.txt
 
 ## Please help and contribute
 GIDL is an exciting work in progress.
