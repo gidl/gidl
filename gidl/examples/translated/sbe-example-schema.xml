@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema id="1" version="0" semanticVersion="1.0"
+        description="Manual translation from SBE to GIDL: code generation unit test support">
+    <types>
+        <struct name="messageHeader" description="Message identifiers and length of message root">
+            <field name="blockLength" id="1" type="uint16"/>
+            <field name="templateId"  id="2" type="uint16"/>
+            <field name="schemaId"    id="3" type="uint16"/>
+            <field name="version"     id="4" type="uint16"/>
+        </struct>
+        
+        <struct name="groupSizeEncoding" description="Repeating group dimensions">
+            <field name="blockLength" id="1" primitiveType="uint16"/>
+            <field name="numInGroup"  id="2" primitiveType="uint8"/>
+        </struct>
+        
+        <struct name="varDataEncoding">
+            <field name="length"  id="1" type="uint8"/>
+            <field name="varData" id="2" type="uint8" length="0" characterEncoding="UTF-8"/>
+        </struct>
+        
+        <type name="ModelYear"   primitiveType="uint16"/>
+        <type name="VehicleCode" primitiveType="char"  length="6" characterEncoding="ASCII"/>
+        <type name="someNumbers" primitiveType="int32" length="5"/>
+        <type name="Ron"         primitiveType="uint8" minValue="90" maxValue="110"/>
+
+        <struct name="Engine">
+            <field name="capacity"         id="1" type="uint16"/>
+            <field name="numCylinders"     id="2" type="uint8"/>
+            <field name="maxRpm"           id="3" type="uint16" presence="constant">9000</field>
+            <field name="manufacturerCode" id="4" type="char" length="3"/>
+            <field name="fuel"             id="5" type="char" presence="constant">Petrol</field>
+        </struct>
+        
+        <enum name="Model" encodingType="char">
+            <choice name="A">A</choice>
+            <choice name="B">B</choice>
+            <choice name="C">C</choice>
+        </enum>
+    
+    	<bitset name="OptionalExtras" encodingType="uint8">
+	        <choice name="sunRoof">0</choice>
+	        <choice name="sportsPack">1</choice>
+	        <choice name="cruiseControl">2</choice>
+		</bitset>
+        
+ 	    <struct name="Car" description="Description of a basic Car">
+	        <field name="serialNumber"      id="1" type="uint64"/>
+	        <field name="modelYear"         id="2" type="ModelYear"/>
+	        <field name="available"         id="3" type="bool"/>
+	        <field name="code"              id="4" type="Model"/>
+	        <field name="someNumbers"       id="5" type="someNumbers"/>
+	        <field name="vehicleCode"       id="6" type="VehicleCode"/>
+	        <field name="extras"            id="7" type="OptionalExtras"/>
+	        <field name="engine"            id="8" type="Engine"/>
+	        <list name="fuelFigures"        id="9" dimensionType="groupSizeEncoding">
+	            <field name="speed"         id="10" type="uint16"/>
+	            <field name="mpg"           id="11" type="float"/>
+	        </list>
+	        <list name="performanceFigures" id="12" dimensionType="groupSizeEncoding">
+	            <field name="octaneRating"  id="13" type="Ron"/>
+	            <list name="acceleration"   id="14" dimensionType="groupSizeEncoding">
+	                <field name="mph"       id="15" type="uint16"/>
+	                <field name="seconds"   id="16" type="float"/>
+	            </list>
+	        </list>
+	        <data name="make"               id="17" type="varDataEncoding"/>
+	        <data name="model"              id="18" type="varDataEncoding"/>
+	        <data name="activationCode"     id="19" type="varDataEncoding"/>
+	    </struct>
+	</types>
+	
+    <service name="CarService">
+    	<method name="sendCar">
+	    	<message type="Car"/>
+    	</method>
+    </service>
+</schema>

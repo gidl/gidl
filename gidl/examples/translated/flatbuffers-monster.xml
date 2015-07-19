@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema id="1" version="0" semanticVersion="1.0" 
+		namespace="MyGame.Sample"
+        description="Manual translation from FlatBuffers to GIDL: monster.fbs">
+    <types>
+        <enum name="Color" encodingType="sint8">
+            <choice name="Red">0</choice>
+            <choice name="Green">1</choice>
+            <choice name="Blue">2</choice>
+        </enum>
+
+		<union name="Any">
+			<choice type="void">0</choice>
+			<choice type="Monster">1</choice>
+		</union>
+
+        <struct name="Vec3">
+            <field name="x" id="1" type="float32"/>
+            <field name="y" id="2" type="float32"/>
+            <field name="z" id="3" type="float32"/>
+        </struct>
+                
+ 	    <struct name="Monster">
+	        <field name="pos"       id="1" type="Vec3"/>
+	        <field name="mana"      id="2" type="sint16">150</field>
+	        <field name="hp"        id="3" type="sint16">100</field>
+	        <field name="name"      id="4" type="string"/>
+	        <field name="friendly"  id="5" type="bool">false</field>
+	        <list  name="inventory" id="6">
+	        	<field name="item"  id="7" type="uint8"/>
+	        </list>
+	        <field name="color"     id="8" type="Color">Blue</field>
+	    </struct>
+	</types>
+	
+    <service name="MonsterService">
+    	<method name="sendMonster">
+	    	<message type="Monster"/>
+    	</method>
+    </service>
+</schema>
