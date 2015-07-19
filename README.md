@@ -25,6 +25,15 @@ Reasons to use GIDL:
 
 [GIDL roadmap](https://github.com/gidl/gidl/wiki/GIDL-roadmap)
 
+# Project dependencies
+Google FlatBuffers (by Google):
+- Project on GitHub: https://github.com/google/flatbuffers
+- Apache 2.0 License: https://github.com/google/flatbuffers/blob/master/LICENSE.txt
+
+Simple binary encoding (by Real Logic):
+- Project on GitHub: https://github.com/real-logic/simple-binary-encoding
+- Apache 2.0 License: https://github.com/real-logic/simple-binary-encoding/blob/master/LICENSE
+
 ## Please help and contribute
 GIDL is an exciting work in progress.
 
