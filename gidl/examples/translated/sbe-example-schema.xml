@@ -10,8 +10,8 @@
         </struct>
         
         <struct name="groupSizeEncoding" description="Repeating group dimensions">
-            <field name="blockLength" id="1" primitiveType="uint16"/>
-            <field name="numInGroup"  id="2" primitiveType="uint8"/>
+            <field name="blockLength" id="1" type="uint16"/>
+            <field name="numInGroup"  id="2" type="uint8"/>
         </struct>
         
         <struct name="varDataEncoding">
@@ -33,15 +33,15 @@
         </struct>
         
         <enum name="Model" encodingType="char">
-            <choice name="A">A</choice>
-            <choice name="B">B</choice>
-            <choice name="C">C</choice>
+            <choice id="A">A</choice>
+            <choice id="B">B</choice>
+            <choice id="C">C</choice>
         </enum>
     
     	<bitset name="OptionalExtras" encodingType="uint8">
-	        <choice name="sunRoof">0</choice>
-	        <choice name="sportsPack">1</choice>
-	        <choice name="cruiseControl">2</choice>
+	        <choice id="0">sunRoof</choice>
+	        <choice id="1">sportsPack</choice>
+	        <choice id="2">cruiseControl</choice>
 		</bitset>
         
  	    <struct name="Car" description="Description of a basic Car">

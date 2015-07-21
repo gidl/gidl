@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <schema id="1" version="0" semanticVersion="1.0" 
-		namespace="MyGame.Sample"
         description="Manual translation from FlatBuffers to GIDL: monster.fbs">
+	<namespace>MyGame.Sample</namespace>
     <types>
         <enum name="Color" encodingType="sint8">
-            <choice name="Red">0</choice>
-            <choice name="Green">1</choice>
-            <choice name="Blue">2</choice>
+            <choice id="0">Red</choice>
+            <choice id="1">Green</choice>
+            <choice id="2">Blue</choice>
         </enum>
 
 		<union name="Any">
-			<choice type="void">0</choice>
-			<choice type="Monster">1</choice>
+			<choice id="0">void</choice>
+			<choice id="1">Monster</choice>
 		</union>
 
         <struct name="Vec3">
