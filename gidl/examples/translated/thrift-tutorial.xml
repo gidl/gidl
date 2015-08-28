@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schema id="1" version="0" semanticVersion="1.0"
+        description="Manual translation from Thrift to GIDL: Thrift tutorial">
+    <types>
+		<namespace language="cpp">shared</namespace>
+		<namespace language="d">share</namespace>
+		<namespace language="java">shared</namespace>
+		<namespace language="php">shared</namespace>
+		<namespace language="perl">shared</namespace>
+		<namespace language="haxe">shared</namespace>
+		
+        <struct name="SharedStruct">
+        	<field name="key"   id="1" type="sint32"/>
+	        <field name="value" id="2" type="string"/>
+		</struct>
+		
+		<struct name="GetStructRequest">
+        	<field name="key" id="1" type="sint32"/>
+        </struct>
+    </types>
+    
+    <types>
+		<namespace language="cpp">tutorial</namespace>
+		<namespace language="d">tutorial</namespace>
+		<namespace language="java">tutorial</namespace>
+		<namespace language="php">tutorial</namespace>
+		<namespace language="perl">tutorial</namespace>
+		<namespace language="haxe">tutorial</namespace>
+		
+        <type name="MyInteger" primitiveType="sint32"/>
+        
+        <enum name="Operation" encodingType="uint8">
+        	<choice id="1">ADD</choice>
+	        <choice id="2">SUBTRACT</choice>
+	        <choice id="3">MULTIPLY</choice>
+	        <choice id="4">DIVIDE</choice>
+		</enum>
+        
+        <struct name="Work">
+        	<field name="num1"    id="1" type="sint32">0</field>
+	        <field name="num2"    id="2" type="sint32"/>
+	        <field name="op"      id="3" type="Operation"/>
+	        <field name="comment" id="4" type="string"/>        
+        </struct>
+        
+        <struct name="InvalidOperation">
+        	<field name="whatOp" id="1" type="sint32"/>
+	        <field name="why"    id="2" type="string"/>
+        </struct>
+        
+        <union name="exception">
+			<choice id="0" type="void"/>
+			<choice id="1" type="InvalidOperation"/>
+        </union>
+                
+        <struct name="AddRequest">
+        	<field name="num1" id="1" type="sint32"/>
+        	<field name="num2" id="2" type="sint32"/>
+        </struct>
+    </types>
+    
+    <service name="SharedService">
+    	<method name="getStruct">
+	    	<request  type="GetStructRequest"/>
+	    	<response type="SharedStruct"/>
+    	</method>
+    </service>
+
+    <service name="Calculator">
+    	<method name="ping">
+	    	<request  type="void"/>
+	    	<response type="void"/>
+    	</method>
+    	
+    	<method name="add">
+	    	<request  type="AddRequest"/>
+	    	<response type="sint32"/>
+    	</method>
+    	
+    	<method name="zip">
+	    	<message type="void"/>
+    	</method>
+    </service>
+</schema>

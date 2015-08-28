@@ -2,26 +2,23 @@
 
 ## What is GIDL?
 GIDL **translates between the Interface Definition Languages (IDLs)** of these messaging frameworks:
-- Simple Binary Encoding (SBE) - **low latency**
-- Google FlatBuffers - **low latency**
-- Cap'n Proto (capnp) - **low latency**
+- Simple Binary Encoding (SBE) - **low latency (LOLA)**
+- Google FlatBuffers - **low latency (LOLA)**
+- Cap'n Proto (capnp) - **low latency (LOLA)**
 - Apache Thrift - **medium latency**
 - Google Protocol Buffers (ProtoBuf) - **medium latency**
 
 ## Why GIDL?
-Reasons to use GIDL:
-- Simplify migration between messaging frameworks
-- Speed up modeling tool integration
-- Ease performance comparisons between the messaging frameworks
+Some reasons to use GIDL:
+- Migrate to low-latency (LOLA) messaging frameworks conveniently
+- Allow performance comparisons between different messaging frameworks
 
 ## Documentation
 [Design principles](https://github.com/gidl/gidl/wiki/Design-principles)
 
-[Translating message definitions](https://github.com/gidl/gidl/wiki/Translating-message-definitions)
+[Translating type definitions](https://github.com/gidl/gidl/wiki/Translating-type-definitions)
 
-[Translating service definitions](https://github.com/gidl/gidl/wiki/Translating-service-definitions) *in combination with* [Service workarounds for SBE and FlatBuffers](https://github.com/gidl/gidl/wiki/Service-workarounds-for-SBE-and-FlatBuffers)
-
-[Suggesting improvements for generated Java clients](https://github.com/gidl/gidl/wiki/Suggesting-improvements-for-generated-Java-clients)
+[Translating message and service definitions](https://github.com/gidl/gidl/wiki/Translating-message-and-service-definitions) *in combination with* [Service workarounds for SBE and FlatBuffers](https://github.com/gidl/gidl/wiki/Service-workarounds-for-SBE-and-FlatBuffers)
 
 [GIDL roadmap](https://github.com/gidl/gidl/wiki/GIDL-roadmap)
 
@@ -52,6 +49,6 @@ Reasons to use GIDL:
 - Apache 2.0 license: https://github.com/google/flatbuffers/blob/master/LICENSE.txt
 
 ## Please help and contribute
-GIDL is an exciting work in progress.
+GIDL is an exciting work in progress, but I can't spend much time on it.
 
 Please feel very welcome to contribute to GIDL! Consult the [GIDL roadmap](https://github.com/gidl/gidl/wiki/GIDL-roadmap) on how to help - and just write a quick e-mail to Andreas Schmid at gidl-community@gmx.de 

@@ -8,18 +8,18 @@
             <choice id="1">Green</choice>
             <choice id="2">Blue</choice>
         </enum>
-
+        
 		<union name="Any">
-			<choice id="0">void</choice>
-			<choice id="1">Monster</choice>
+			<choice id="0" type="void"/>
+			<choice id="1" type="Monster"/>
 		</union>
-
+		
         <struct name="Vec3">
             <field name="x" id="1" type="float32"/>
             <field name="y" id="2" type="float32"/>
             <field name="z" id="3" type="float32"/>
         </struct>
-                
+        
  	    <struct name="Monster">
 	        <field name="pos"       id="1" type="Vec3"/>
 	        <field name="mana"      id="2" type="sint16">150</field>
