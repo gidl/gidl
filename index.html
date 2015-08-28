@@ -37,27 +37,26 @@
 <p>GIDL <strong>translates between the Interface Definition Languages (IDLs)</strong> of these messaging frameworks:</p>
 
 <ul>
+<li>Simple Binary Encoding (SBE) - <strong>low latency (LOLA)</strong>
+</li>
+<li>Google FlatBuffers - <strong>low latency (LOLA)</strong>
+</li>
+<li>Cap'n Proto (capnp) - <strong>low latency (LOLA)</strong>
+</li>
 <li>Apache Thrift - <strong>medium latency</strong>
 </li>
 <li>Google Protocol Buffers (ProtoBuf) - <strong>medium latency</strong>
-</li>
-<li>Simple Binary Encoding (SBE) - <strong>low latency</strong>
-</li>
-<li>Google FlatBuffers - <strong>low latency</strong>
-</li>
-<li>Cap'n Proto (capnp) - <strong>low latency</strong>
 </li>
 </ul>
 
 <h2>
 <a id="why-gidl" class="anchor" href="#why-gidl" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why GIDL?</h2>
 
-<p>Reasons to use GIDL:</p>
+<p>Some reasons to use GIDL:</p>
 
 <ul>
-<li>Simplify migration between messaging frameworks</li>
-<li>Speed up modeling tool integration</li>
-<li>Ease performance comparisons between the messaging frameworks</li>
+<li>Migrate to low-latency (LOLA) messaging frameworks conveniently</li>
+<li>Allow performance comparisons between different messaging frameworks</li>
 </ul>
 
 <h2>
@@ -65,18 +64,74 @@
 
 <p><a href="https://github.com/gidl/gidl/wiki/Design-principles">Design principles</a></p>
 
-<p><a href="https://github.com/gidl/gidl/wiki/Translating-message-definitions">Translating message definitions</a></p>
+<p><a href="https://github.com/gidl/gidl/wiki/Translating-type-definitions">Translating type definitions</a></p>
 
-<p><a href="https://github.com/gidl/gidl/wiki/Translating-service-definitions">Translating service definitions</a> <em>in combination with</em> <a href="https://github.com/gidl/gidl/wiki/Service-workarounds-for-SBE-and-FlatBuffers">Service workarounds for SBE and FlatBuffers</a></p>
-
-<p><a href="https://github.com/gidl/gidl/wiki/Suggesting-improvements-for-generated-Java-clients">Suggesting improvements for generated Java clients</a></p>
+<p><a href="https://github.com/gidl/gidl/wiki/Translating-message-and-service-definitions">Translating message and service definitions</a> <em>in combination with</em> <a href="https://github.com/gidl/gidl/wiki/Service-workarounds-for-SBE-and-FlatBuffers">Service workarounds for SBE and FlatBuffers</a></p>
 
 <p><a href="https://github.com/gidl/gidl/wiki/GIDL-roadmap">GIDL roadmap</a></p>
+
+<h1>
+<a id="project-dependencies" class="anchor" href="#project-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Project dependencies</h1>
+
+<p><strong>Simple binary encoding</strong> (by Real Logic):</p>
+
+<ul>
+<li>Project page: <a href="https://real-logic.github.io/simple-binary-encoding/">https://real-logic.github.io/simple-binary-encoding/</a>
+</li>
+<li>Project repository on GitHub: <a href="https://github.com/real-logic/simple-binary-encoding">https://github.com/real-logic/simple-binary-encoding</a>
+</li>
+<li>Apache 2.0 license: <a href="https://github.com/real-logic/simple-binary-encoding/blob/master/LICENSE">https://github.com/real-logic/simple-binary-encoding/blob/master/LICENSE</a>
+</li>
+</ul>
+
+<p><strong>Google FlatBuffers</strong> (by Google):</p>
+
+<ul>
+<li>Project page: <a href="https://google.github.io/flatbuffers/">https://google.github.io/flatbuffers/</a>
+</li>
+<li>Project repository on GitHub: <a href="https://github.com/google/flatbuffers">https://github.com/google/flatbuffers</a>
+</li>
+<li>Apache 2.0 license: <a href="https://github.com/google/flatbuffers/blob/master/LICENSE.txt">https://github.com/google/flatbuffers/blob/master/LICENSE.txt</a>
+</li>
+</ul>
+
+<p><strong>Cap'n Proto</strong> (by Sandstorm.io):</p>
+
+<ul>
+<li>Project page: <a href="https://capnproto.org/">https://capnproto.org/</a>
+</li>
+<li>Project repository on GitHub: <a href="https://github.com/sandstorm-io/capnproto">https://github.com/sandstorm-io/capnproto</a>
+</li>
+<li>MIT license: <a href="https://github.com/sandstorm-io/capnproto/blob/master/LICENSE">https://github.com/sandstorm-io/capnproto/blob/master/LICENSE</a>
+</li>
+</ul>
+
+<p><strong>Apache Thrift</strong> (by Apache Foundation):</p>
+
+<ul>
+<li>Project page: <a href="https://thrift.apache.org/">https://thrift.apache.org/</a>
+</li>
+<li>Project repository: <a href="https://git-wip-us.apache.org/repos/asf?p=thrift.git;a=summary">https://git-wip-us.apache.org/repos/asf?p=thrift.git;a=summary</a>
+</li>
+<li>Apache 2.0 license: <a href="http://www.apache.org/licenses/">http://www.apache.org/licenses/</a>
+</li>
+</ul>
+
+<p><strong>Google Protocol Buffers</strong> (by Google):</p>
+
+<ul>
+<li>Project page: <a href="https://developers.google.com/protocol-buffers/">https://developers.google.com/protocol-buffers/</a>
+</li>
+<li>Project repository on GitHub: <a href="https://github.com/google/protobuf">https://github.com/google/protobuf</a>
+</li>
+<li>Apache 2.0 license: <a href="https://github.com/google/flatbuffers/blob/master/LICENSE.txt">https://github.com/google/flatbuffers/blob/master/LICENSE.txt</a>
+</li>
+</ul>
 
 <h2>
 <a id="please-help-and-contribute" class="anchor" href="#please-help-and-contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Please help and contribute</h2>
 
-<p>GIDL is an exciting work in progress.</p>
+<p>GIDL is an exciting work in progress, but I can't spend much time on it.</p>
 
 <p>Please feel very welcome to contribute to GIDL! Consult the <a href="https://github.com/gidl/gidl/wiki/GIDL-roadmap">GIDL roadmap</a> on how to help - and just write a quick e-mail to Andreas Schmid at <a href="mailto:gidl-community@gmx.de">gidl-community@gmx.de</a> </p>
       </section>
